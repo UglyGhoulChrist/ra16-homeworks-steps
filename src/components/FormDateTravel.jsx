@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./FormDateTravel.scss";
-const moment = require("moment");
 
 function FormDateTravel({ newDateTravel }) {
   const [inputDate, setInputDate] = useState("");
@@ -9,12 +8,11 @@ function FormDateTravel({ newDateTravel }) {
   const inputDateTravelHandler = (e) => {
     e.preventDefault();
     if (inputDate && inputTravel > 0) {
-      const date = moment(inputDate).format("DD.MM.YY");
       setInputDate("");
       setInputTravel("");
       newDateTravel({
         id: Math.random(),
-        date: date,
+        date: inputDate,
         travel: +inputTravel,
       });
     }
