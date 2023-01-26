@@ -1,0 +1,31 @@
+.form-data-travel {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1rem;
+
+    &__label {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        flex: auto;
+        text-align: center;
+    }
+
+    &__input {
+        border: 1px solid black;
+        border-radius: .25rem;
+        padding: 0.5rem 1rem;
+    }
+
+    &__button {
+        height: fit-content;
+        border: 1px solid black;
+        border-radius: .25rem;
+        padding: 0.5rem 1rem;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+}
