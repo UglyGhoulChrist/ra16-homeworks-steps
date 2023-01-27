@@ -5,11 +5,12 @@ const moment = require("moment");
 // ToDo ## Редактирование данных. При нажатии на ✎ происходит перенос данных в форму ввода с последующим сохранением при нажатии кнопки Ok.
 
 function TravelItem({ dateTravel, delDateTravel }) {
-  const date = moment(dateTravel).format("DD.MM.YY");
-  const { id, travel } = dateTravel;
+  const { id, date, travel } = dateTravel;
+  const formatDate = moment(date, "YYYY-MM-DD").format("DD.MM.YY");
+
   return (
     <li className="travel-item">
-      <div>{date}</div>
+      <div>{formatDate}</div>
       <div>{travel}</div>
       <div>
         <AiFillDelete onClick={() => delDateTravel(id)} />

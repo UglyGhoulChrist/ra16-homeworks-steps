@@ -8,13 +8,13 @@ function FormDateTravel({ newDateTravel }) {
   const inputDateTravelHandler = (e) => {
     e.preventDefault();
     if (inputDate && inputTravel > 0) {
-      setInputDate("");
-      setInputTravel("");
       newDateTravel({
         id: Math.random(),
         date: inputDate,
         travel: +inputTravel,
       });
+      setInputDate("");
+      setInputTravel("");
     }
   };
 
