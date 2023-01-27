@@ -5,17 +5,23 @@ import { useState } from "react";
 
 function App() {
   // Стартовый список прогулок
-  const [dateTravelList, setDateTravelList] = useState([
-    { id: "1", date: "2023-01-05", travel: 1 },
-    { id: "2", date: "2023-01-06", travel: 3 },
-  ]);
+  const [dateTravelList, setDateTravelList] = useState(
+    [
+      { id: "1", date: "2023-01-05", travel: 1 },
+      { id: "2", date: "2023-01-06", travel: 3 },
+    ].sort((a, b) => (a.date < b.date ? 1 : -1))
+  );
 
   // Проверяем есть ли введённая пользователем дата в массиве с датами
   const addDateTravel = (newDateTravel) => {
     let indexFind = dateTravelList.find((e) => e.date === newDateTravel.date);
     // Если нет, создаём массив, добавляя введённую пользователем дату в начало массива
     if (indexFind === undefined) {
-      setDateTravelList([newDateTravel, ...dateTravelList]);
+      setDateTravelList(
+        [newDateTravel, ...dateTravelList].sort((a, b) =>
+          a.date < b.date ? 1 : -1
+        )
+      );
     } else {
       // Если есть, перебираем массив, меняя совпадение
       setDateTravelList(

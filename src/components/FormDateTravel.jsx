@@ -21,7 +21,7 @@ function FormDateTravel({ newDateTravel }) {
   return (
     <form onSubmit={inputDateTravelHandler} className="form-data-travel">
       <label className="form-data-travel__label">
-        Дата (ДД.ММ.ГГ)
+        Дата (ДД.ММ.ГГГГ)
         <input
           onChange={(e) => setInputDate(e.target.value)}
           className="form-data-travel__input"
