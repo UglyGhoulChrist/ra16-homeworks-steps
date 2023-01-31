@@ -2,7 +2,7 @@ import React from "react";
 import "./Travel.scss";
 import TravelList from "./TravelList";
 
-function Travel({ dateTravelList, delDateTravel }) {
+function Travel({ dateTravelList, delDateTravel, changeDateTravel }) {
   return (
     <div>
       <div className="travel-header">
@@ -13,6 +13,7 @@ function Travel({ dateTravelList, delDateTravel }) {
       <TravelList
         dateTravelList={dateTravelList}
         delDateTravel={delDateTravel}
+        changeDateTravel={changeDateTravel}
       />
     </div>
   );

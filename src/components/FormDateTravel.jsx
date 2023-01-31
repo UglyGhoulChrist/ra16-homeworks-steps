@@ -1,9 +1,14 @@
 import { useState } from "react";
 import "./FormDateTravel.scss";
 
-function FormDateTravel({ newDateTravel }) {
-  const [inputDate, setInputDate] = useState("");
-  const [inputTravel, setInputTravel] = useState("");
+function FormDateTravel({
+  newDateTravel,
+  defaultInputDateTravel,
+  changeDateTravel,
+}) {
+  console.log("defaultInputDateTravel", defaultInputDateTravel);
+  const [inputDate, setInputDate] = useState(defaultInputDateTravel.date);
+  const [inputTravel, setInputTravel] = useState(defaultInputDateTravel.travel);
 
   const inputDateTravelHandler = (e) => {
     e.preventDefault();

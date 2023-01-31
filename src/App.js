@@ -11,6 +11,10 @@ function App() {
       { id: "2", date: "2023-01-06", travel: 3 },
     ].sort((a, b) => (a.date < b.date ? 1 : -1))
   );
+  const [defaultInputDateTravel, setDefaultInputDateTravel] = useState({
+    date: null,
+    travel: null,
+  });
 
   // Проверяем есть ли введённая пользователем дата в массиве с датами
   const addDateTravel = (newDateTravel) => {
@@ -41,10 +45,23 @@ function App() {
   const delDateTravel = (id) => {
     setDateTravelList([...dateTravelList.filter((e) => e.id !== id)]);
   };
+
+  const changeDateTravel = (dateTravel) => {
+    setDefaultInputDateTravel(dateTravel);
+  };
+
   return (
     <div className="App">
-      <FormDateTravel newDateTravel={addDateTravel} />
-      <Travel dateTravelList={dateTravelList} delDateTravel={delDateTravel} />
+      <FormDateTravel
+        newDateTravel={addDateTravel}
+        defaultInputDateTravel={defaultInputDateTravel}
+        changeDateTravel={changeDateTravel}
+      />
+      <Travel
+        dateTravelList={dateTravelList}
+        delDateTravel={delDateTravel}
+        changeDateTravel={changeDateTravel}
+      />
     </div>
   );
 }
