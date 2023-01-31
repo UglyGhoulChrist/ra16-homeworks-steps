@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 import "./FormDateTravel.scss";
 
 function FormDateTravel({
@@ -6,20 +6,23 @@ function FormDateTravel({
   defaultInputDateTravel,
   changeDateTravel,
 }) {
-  console.log("defaultInputDateTravel", defaultInputDateTravel);
-  const [inputDate, setInputDate] = useState(defaultInputDateTravel.date);
-  const [inputTravel, setInputTravel] = useState(defaultInputDateTravel.travel);
+  const inputDateRef = useRef(null);
+  const inputTravelRef = useRef(null);
+
+  useEffect(() => {
+    inputDateRef.current.value = defaultInputDateTravel.date;
+    inputTravelRef.current.value = defaultInputDateTravel.travel;
+  }, [defaultInputDateTravel]);
 
   const inputDateTravelHandler = (e) => {
     e.preventDefault();
-    if (inputDate && inputTravel > 0) {
+    if (inputDateRef.current.value && inputTravelRef.current.value > 0) {
       newDateTravel({
         id: Math.random(),
-        date: inputDate,
-        travel: +inputTravel,
+        date: inputDateRef.current.value,
+        travel: +inputTravelRef.current.value - defaultInputDateTravel.travel,
       });
-      setInputDate("");
-      setInputTravel("");
+      changeDateTravel({ date: null, travel: null });
     }
   };
 
@@ -28,19 +31,17 @@ function FormDateTravel({
       <label className="form-data-travel__label">
         Дата (ДД.ММ.ГГГГ)
         <input
-          onChange={(e) => setInputDate(e.target.value)}
+          ref={inputDateRef}
           className="form-data-travel__input"
           type="date"
-          value={inputDate}
         />
       </label>
       <label className="form-data-travel__label">
         Пройдено км
         <input
-          onChange={(e) => setInputTravel(e.target.value)}
+          ref={inputTravelRef}
           className="form-data-travel__input"
           type="number"
-          value={inputTravel}
         />
       </label>
       <button className="form-data-travel__button">OK</button>

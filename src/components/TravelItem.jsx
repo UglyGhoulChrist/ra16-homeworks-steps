@@ -13,9 +13,14 @@ function TravelItem({ dateTravel, delDateTravel, changeDateTravel }) {
       <div>{formatDate}</div>
       <div>{travel}</div>
       <div>
-        <AiFillDelete onClick={() => delDateTravel(id)} />
+        <AiFillDelete
+          onClick={() => {
+            delDateTravel(id);
+            changeDateTravel({ date: null, travel: null });
+          }}
+        />
         <AiFillEdit
-          onClick={() => changeDateTravel({ date: date, travel, travel })}
+          onClick={() => changeDateTravel({ date: date, travel: travel })}
         />
       </div>
     </li>
